@@ -10,6 +10,7 @@ import { FooterComponent } from './components/layouts/footer/footer.component';
 import { ControlSidebarComponent } from './components/layouts/control-sidebar/control-sidebar.component';
 import { BlankComponent } from './components/blank/blank.component';
 import { LoginComponent } from './components/auth/login/login.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { LoginComponent } from './components/auth/login/login.component';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule
   ],
   providers: [],
