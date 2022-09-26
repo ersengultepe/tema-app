@@ -9,6 +9,7 @@ import { MainSidebarComponent } from './components/layouts/main-sidebar/main-sid
 import { FooterComponent } from './components/layouts/footer/footer.component';
 import { ControlSidebarComponent } from './components/layouts/control-sidebar/control-sidebar.component';
 import { BlankComponent } from './components/blank/blank.component';
+import { LoginComponent } from './components/auth/login/login.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { BlankComponent } from './components/blank/blank.component';
     MainSidebarComponent,
     FooterComponent,
     ControlSidebarComponent,
-    BlankComponent
+    BlankComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
