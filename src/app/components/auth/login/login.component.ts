@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ErrService } from 'src/app/services/err.service';
 import { AuthService } from '../services/auth.service';
 import { LoginModel } from './models/login.model';
 
@@ -16,7 +17,8 @@ export class LoginComponent implements OnInit {
   
   constructor(
     private _auth: AuthService,
-    private _router: Router
+    private _router: Router,
+    private _err: ErrService
   ) { }
 
   ngOnInit(): void {
@@ -33,7 +35,7 @@ export class LoginComponent implements OnInit {
       },
       error: (err)=> {
         this.isLoading = false;
-        console.log(err);        
+        this._err.errorHandler(err)    
       }
     })
     
