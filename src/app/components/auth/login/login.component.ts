@@ -12,6 +12,7 @@ import { LoginModel } from './models/login.model';
 export class LoginComponent implements OnInit {
 
   loginModel: LoginModel = new LoginModel();
+  isLoading = false;
   
   constructor(
     private _auth: AuthService,
@@ -22,16 +23,17 @@ export class LoginComponent implements OnInit {
   }
 
   signIn(){
+    this.isLoading = true;
     this._auth.login(this.loginModel).subscribe({
-      next: (value)=> {         
-        //localStorage.setItem("token", JSON.stringify(this.tokenModel))
+      next: (value)=> { 
+          //localStorage.setItem("token", JSON.stringify(this.tokenModel))
         localStorage.setItem("token", value.data.accessToken);
         //this._router.navigate(["/"]);
         this._router.navigateByUrl("/");
       },
       error: (err)=> {
-        console.log(err);
-        
+        this.isLoading = false;
+        console.log(err);        
       }
     })
     
