@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { LoginModel } from './models/login.model';
-import { TokenModel } from './models/token.model';
+
 
 @Component({
   selector: 'app-login',
@@ -11,9 +12,10 @@ import { TokenModel } from './models/token.model';
 export class LoginComponent implements OnInit {
 
   loginModel: LoginModel = new LoginModel();
-  tokenModel: TokenModel = new TokenModel();
+  
   constructor(
-    private _auth: AuthService
+    private _auth: AuthService,
+    private _router: Router
   ) { }
 
   ngOnInit(): void {
@@ -21,11 +23,11 @@ export class LoginComponent implements OnInit {
 
   signIn(){
     this._auth.login(this.loginModel).subscribe({
-      next: (value)=> {
-        this.tokenModel = value.data;   
-        localStorage.setItem("token", JSON.stringify(this.tokenModel))
-        localStorage.setItem("token2", this.tokenModel.accessToken)
-          
+      next: (value)=> {         
+        //localStorage.setItem("token", JSON.stringify(this.tokenModel))
+        localStorage.setItem("token", value.data.accessToken);
+        //this._router.navigate(["/"]);
+        this._router.navigateByUrl("/");
       },
       error: (err)=> {
         console.log(err);
