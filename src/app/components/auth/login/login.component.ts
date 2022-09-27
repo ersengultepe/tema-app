@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { LoginModel } from './models/login.model';
+import { TokenModel } from './models/token.model';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ import { LoginModel } from './models/login.model';
 export class LoginComponent implements OnInit {
 
   loginModel: LoginModel = new LoginModel();
-
+  tokenModel: TokenModel = new TokenModel();
   constructor(
     private _auth: AuthService
   ) { }
@@ -21,7 +22,10 @@ export class LoginComponent implements OnInit {
   signIn(){
     this._auth.login(this.loginModel).subscribe({
       next: (value)=> {
-        console.log(value);        
+        this.tokenModel = value.data;   
+        localStorage.setItem("token", JSON.stringify(this.tokenModel))
+        localStorage.setItem("token2", this.tokenModel.accessToken)
+          
       },
       error: (err)=> {
         console.log(err);
