@@ -1,0 +1,59 @@
+apiUrl: "https://angularegitimleriapi.ecnorow.com/api/"
+
+//-------------------------------------
+
+Register Model
+export class RegisterModel{
+    name: string;
+    email: string;
+    password: string;
+}
+
+ApiUrl: "PersonelAuth/register"
+Metot: Post
+
+//-------------------------------------
+
+Login Model
+export class LoginModel{
+    email: string;
+    password: string;
+}
+
+ApiUrl: "PersonelAuth/login"
+Metot: Post
+
+//-------------------------------------
+
+Personel Service
+export class PersonelModel {
+    personelAdi: string;
+    bolumu: string;
+    maasi: number;
+    iseGirisTarihi: string;
+}
+
+ApiUrl: "Personels/Add"
+Metot: Post
+
+
+ApiUrl: "Personels/Update"
+Metot: Post
+
+
+ApiUrl: "Personels/Delete"
+Metot: Post
+
+
+ApiUrl: "Personels/GetList"
+Metot: Get
+
+
+Interceptor
+intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+    let newRequest = request.clone({
+      headers: request.headers.set("Authorization", "Bearer " + localStorage.getItem("token"))
+    });
+   
+    return next.handle(newRequest);
+  }

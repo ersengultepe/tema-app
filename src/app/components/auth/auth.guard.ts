@@ -18,7 +18,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     state: RouterStateSnapshot) {
       let result = false;
       
-      if (localStorage.getItem("b2d5ef75-5882-441f-9282-0b62b6322fff")) {
+      if (localStorage.getItem("token")) {
         result = true;
       }
 
