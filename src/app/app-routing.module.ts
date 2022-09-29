@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './components/auth/guards/auth.guard';
 import { LoginComponent } from './components/auth/login/login.component';
 import { BlankComponent } from './components/blank/blank.component';
+import { BolumComponent } from './components/bolum/bolum.component';
 import { LayoutsComponent } from './components/layouts/layouts.component';
 
 const routes: Routes = [
@@ -14,6 +15,10 @@ const routes: Routes = [
       {
         path: "",
         component: BlankComponent,        
+      },
+      {
+        path: "bolum",
+        component: BolumComponent,        
       }
     ]
   },
