@@ -16,6 +16,7 @@ export class PersonelComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.bolumGetList();
   }
 
   bolumGetList(){

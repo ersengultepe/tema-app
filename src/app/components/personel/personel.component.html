@@ -36,10 +36,25 @@
         <div class="card-body">
           <form action="">
             <div class="form-group">
+                Personel Adı
+                <input type="text" class="form-control">
+            </div>
+            <div class="form-group">
                 Bölümü
                 <Select class="form-control">
-                    <option></option>
+                    <option *ngFor="let bolum of bolumler" [value]="bolum.bolumAdi" [innerText]="bolum.bolumAdi"></option>
                 </Select>
+            </div>
+            <div class="form-group">
+                Maaşı
+                <input type="text" class="form-control">
+            </div>
+            <div class="form-group">
+                İşe Giriş Tarihi
+                <input type="date" class="form-control">
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary w-100">Kaydet</button>
             </div>
           </form>
         </div>
