@@ -42,4 +42,15 @@ export class BolumComponent implements OnInit {
       error: (err)=> console.log(err)
     })
   }
+
+  delete(model: BolumModel){
+    let api = environment.api + "PersonelBolums/Delete";
+    this._http.post<any>(api, model).subscribe({
+      next: (res)=> {        
+        this.getList();
+        //console.log(res)
+      },
+      error: (err)=> console.log(err)
+    })
+  }
 }

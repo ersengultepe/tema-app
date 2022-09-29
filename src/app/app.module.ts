@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { BolumComponent } from './components/bolum/bolum.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { PersonelComponent } from './components/personel/personel.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     ControlSidebarComponent,
     BlankComponent,
     LoginComponent,
-    BolumComponent
+    BolumComponent,
+    PersonelComponent
   ],
   imports: [
     BrowserModule,
