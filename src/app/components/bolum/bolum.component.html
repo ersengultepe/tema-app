@@ -51,8 +51,12 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-
+                <tr *ngFor="let bolum of list let index = index">
+                    <td>{{ index + 1 }}</td>
+                    <td>{{ bolum.bolumAdi }}</td>
+                    <td>
+                        <button class="btn btn-danger btn-sil">Sil</button>
+                    </td>
                 </tr>
             </tbody>
           </table>

@@ -11,18 +11,34 @@ import { BolumModel } from './models/bolum.model';
 export class BolumComponent implements OnInit {
 
   bolum: BolumModel = new BolumModel();
-  
+  list: BolumModel[] = [];
   constructor(
     private _http: HttpClient
   ) { }
 
   ngOnInit(): void {
+    this.getList();
   }
 
   kaydet(){
     let api = environment.api + "PersonelBolums/Add";
     this._http.post<any>(api, this.bolum).subscribe({
-      next: (res)=> console.log(res),
+      next: (res)=> {
+        this.bolum = new BolumModel();
+        this.getList();
+        //console.log(res)
+      },
+      error: (err)=> console.log(err)
+    })
+  }
+
+
+  getList(){
+    let api = environment.api + "PersonelBolums/GetList";
+    this._http.get<any>(api).subscribe({
+      next: (res)=> {
+        this.list = res.data;
+      },
       error: (err)=> console.log(err)
     })
   }
