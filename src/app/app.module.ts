@@ -11,8 +11,9 @@ import { ControlSidebarComponent } from './components/layouts/control-sidebar/co
 import { BlankComponent } from './components/blank/blank.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { BolumComponent } from './components/bolum/bolum.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 
 @NgModule({
@@ -33,7 +34,9 @@ import { BolumComponent } from './components/bolum/bolum.component';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

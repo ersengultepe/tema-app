@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { BolumModel } from './models/bolum.model';
 
 @Component({
@@ -19,7 +20,7 @@ export class BolumComponent implements OnInit {
   }
 
   kaydet(){
-    let api = "";
+    let api = environment.api + "PersonelBolums/Add";
     this._http.post<any>(api, this.bolum).subscribe({
       next: (res)=> console.log(res),
       error: (err)=> console.log(err)
