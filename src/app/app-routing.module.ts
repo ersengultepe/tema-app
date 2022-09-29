@@ -5,6 +5,7 @@ import { LoginComponent } from './components/auth/login/login.component';
 import { BlankComponent } from './components/blank/blank.component';
 import { BolumComponent } from './components/bolum/bolum.component';
 import { LayoutsComponent } from './components/layouts/layouts.component';
+import { PersonelComponent } from './components/personel/personel.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,10 @@ const routes: Routes = [
       {
         path: "bolum",
         component: BolumComponent,        
+      },
+      {
+        path: "personel",
+        component: PersonelComponent,        
       }
     ]
   },
