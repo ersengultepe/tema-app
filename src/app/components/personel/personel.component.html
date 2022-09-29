@@ -34,25 +34,25 @@
                 </div>
             </div>
             <div class="card-body">
-                <form action="">
+                <form #form="ngForm" (ngSubmit)="kaydet(form)">
                     <div class="form-group">
                         Personel Adı
-                        <input type="text" class="form-control">
+                        <input #personelAdi name="personelAdi" ngModel required minLength="3" type="text" class="form-control">
                     </div>
                     <div class="form-group">
                         Bölümü
-                        <Select class="form-control">
+                        <select #bolumu name="bolumu" ngModel class="form-control">
                             <option *ngFor="let bolum of bolumler" [value]="bolum.bolumAdi"
                                 [innerText]="bolum.bolumAdi"></option>
-                        </Select>
+                        </select>
                     </div>
                     <div class="form-group">
                         Maaşı
-                        <input type="text" class="form-control">
+                        <input #maasi name="maasi" ngModel type="text" class="form-control">
                     </div>
                     <div class="form-group">
                         İşe Giriş Tarihi
-                        <input type="date" class="form-control">
+                        <input #iseGirisTarihi name="iseGirisTarihi" ngModel type="date" class="form-control">
                     </div>
                     <div class="form-group">
                         <button class="btn btn-primary w-100">Kaydet</button>
@@ -78,7 +78,9 @@
                                 <td [innerText]="personel.bolumu"></td>
                                 <td [innerText]="personel.iseGirisTarihi"></td>
                                 <td [innerText]="personel.maasi"></td>
-                                <td></td>
+                                <td>
+                                    <button class="btn btn-danger btn-sm" (click)="delete(personel)">Sil</button>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
