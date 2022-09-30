@@ -43,7 +43,7 @@
             </p>
           </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="isBolumlerActive">
           <a routerLink="/bolum" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
             <i class="nav-icon fas fa-th"></i>
             <p>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DecodeService } from 'src/app/services/decode.service';
 
 @Component({
   selector: 'app-main-sidebar',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainSidebarComponent implements OnInit {
 
-  constructor() { }
+  roles: string[] = [];
+  isBolumlerActive = false;
+
+  constructor(
+    private _decode: DecodeService
+  ) { 
+    this.roles = _decode.getRoles();
+  }
 
   ngOnInit(): void {
+    if (this.roles.includes("Admin2")) {
+      this.isBolumlerActive = true;
+    }
   }
+
+  
 
 }

@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { DecodeService } from 'src/app/services/decode.service';
 import { environment } from 'src/environments/environment';
 import { BolumModel } from './models/bolum.model';
 
@@ -12,13 +14,25 @@ export class BolumComponent implements OnInit {
 
   bolum: BolumModel = new BolumModel();
   list: BolumModel[] = [];
+  roles: string[] = [];
+  isBolumlerActive = false;
+
   constructor(
-    private _http: HttpClient
-  ) { }
+    private _http: HttpClient,
+    private _decode: DecodeService,
+    private _router: Router
+  ) { 
+    this.roles = _decode.getRoles();
+  }
 
   ngOnInit(): void {
     this.getList();
+    if (!this.roles.includes("Admin2")) {
+      this._router.navigateByUrl("/")
+    }
   }
+
+ 
 
   kaydet(){
     let api = environment.api + "PersonelBolums/Add";
